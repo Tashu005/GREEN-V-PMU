@@ -26,10 +26,20 @@ module dvfs_controller (
             change_req <= 0;
             case (state)
                 S_IDLE: begin
-                    if (spike_detected) target <= 3'd7;
-                    else if (scale_valid) begin
+                    if (spike_detected) begin
+                        // Priority 1: Lookahead spike â€” immediate jump to max
+                        target <= 3'd7;
+                    end else if (scale_valid) begin
+                        // Priority 2: Monitor reactive path â€” graduated step
                         if (scale_cmd == 2'b11 && target < 3'd7) target <= target + 1;
                         else if (scale_cmd == 2'b01 && target > 3'd0) target <= target - 1;
+                    end else begin
+                        // Priority 3: Lookahead graduated path â€” fires when monitor
+                        // is quiet. Allows anticipatory steps without waiting for
+                        // buffer threshold to be crossed.
+                        if (lookahead_cmd == 2'b11 && target < 3'd7) target <= target + 1;
+                        else if (lookahead_cmd == 2'b01 && target > 3'd0) target <= target - 1;
+                        // 2'b10 = HOLD, 2'b00 = IDLE â€” no target change
                     end
                     if (target != current_sel) begin
                         freq_sel <= target; change_req <= 1; state <= S_STEP;

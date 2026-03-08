@@ -9,7 +9,7 @@ module cmu_top (
     input  logic        rst_n,
     
     // CPU Interface
-    input  logic [31:0] inst_window,    // For Lookahead
+    input  logic [31:0] inst_window [7:0],  // 8-instruction fetch window for Lookahead
     input  logic        inst_valid,
     input  logic [6:0]  ibuf_occupancy, // For Monitor (0-64)
     
@@ -35,7 +35,7 @@ module cmu_top (
     ibuf_monitor monitor_inst (
         .clk            (clk_in),
         .rst_n          (rst_n),
-        .ibuf_fill      (ibuf_occupancy),
+        .occupancy      (ibuf_occupancy),
         .scale_cmd      (monitor_cmd),
         .scale_valid    (monitor_valid)
     );
@@ -75,7 +75,15 @@ module cmu_top (
         .change_ack     (change_ack)
     );
 
-    // Track the current selection for the controller's FSM
-    assign current_sel = freq_sel; 
+    // Track the frequency that is ACTUALLY RUNNING in the divider.
+    // Only update after change_ack — not when freq_sel is merely requested.
+    // This is what breaks the self-comparison bug: controller now sees
+    // current_sel == old freq until the divider confirms the switch is done.
+    always_ff @(posedge clk_in or negedge rst_n) begin
+        if (!rst_n)
+            current_sel <= 3'd4; // matches dvfs_controller reset default
+        else if (change_ack)
+            current_sel <= freq_sel;
+    end
 
 endmodule

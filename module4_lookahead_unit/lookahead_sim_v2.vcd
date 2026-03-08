@@ -1,0 +1,530 @@
+$date
+	Sat Mar  7 14:41:04 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_lookahead_unit $end
+$var wire 1 ! spike_detected $end
+$var wire 2 " lookahead_cmd [1:0] $end
+$var parameter 32 # INST_BRANCH $end
+$var parameter 32 $ INST_FLOAD $end
+$var parameter 32 % INST_FP $end
+$var parameter 32 & INST_IMATH $end
+$var parameter 32 ' INST_LOAD $end
+$var parameter 32 ( INST_MADD $end
+$var parameter 32 ) INST_MATH $end
+$var parameter 32 * INST_NOP $end
+$var parameter 32 + INST_STORE $end
+$var reg 1 , clk $end
+$var reg 1 - inst_valid $end
+$var reg 1 . rst_n $end
+$var integer 32 / fail_count [31:0] $end
+$var integer 32 0 pass_count [31:0] $end
+$scope module dut $end
+$var wire 1 , clk $end
+$var wire 1 - inst_valid $end
+$var wire 1 . rst_n $end
+$var wire 8 1 slot_is_mem [7:0] $end
+$var wire 8 2 slot_is_madd [7:0] $end
+$var wire 8 3 slot_is_fp [7:0] $end
+$var wire 8 4 slot_is_compute [7:0] $end
+$var wire 8 5 slot_is_branch [7:0] $end
+$var parameter 2 6 CMD_DOWN $end
+$var parameter 2 7 CMD_HOLD $end
+$var parameter 2 8 CMD_IDLE $end
+$var parameter 2 9 CMD_UP $end
+$var parameter 7 : OP_BRANCH $end
+$var parameter 7 ; OP_FP_LOAD $end
+$var parameter 7 < OP_FP_R $end
+$var parameter 7 = OP_INT_I $end
+$var parameter 7 > OP_INT_R $end
+$var parameter 7 ? OP_LOAD $end
+$var parameter 7 @ OP_MADD $end
+$var parameter 7 A OP_STORE $end
+$var reg 4 B cnt_branch [3:0] $end
+$var reg 4 C cnt_compute [3:0] $end
+$var reg 4 D cnt_fp [3:0] $end
+$var reg 4 E cnt_madd [3:0] $end
+$var reg 4 F cnt_mem [3:0] $end
+$var reg 2 G comb_cmd [1:0] $end
+$var reg 1 H comb_spike $end
+$var reg 2 I lookahead_cmd [1:0] $end
+$var reg 1 ! spike_detected $end
+$scope begin pattern_detect[0] $end
+$var parameter 2 J i $end
+$upscope $end
+$scope begin pattern_detect[1] $end
+$var parameter 2 K i $end
+$upscope $end
+$scope begin pattern_detect[2] $end
+$var parameter 3 L i $end
+$upscope $end
+$scope begin pattern_detect[3] $end
+$var parameter 3 M i $end
+$upscope $end
+$scope begin pattern_detect[4] $end
+$var parameter 4 N i $end
+$upscope $end
+$scope begin pattern_detect[5] $end
+$var parameter 4 O i $end
+$upscope $end
+$scope begin pattern_detect[6] $end
+$var parameter 4 P i $end
+$upscope $end
+$scope begin pattern_detect[7] $end
+$var parameter 4 Q i $end
+$upscope $end
+$scope begin $ivl_for_loop2 $end
+$var integer 32 R j [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin $ivl_for_loop1 $end
+$var integer 32 S k [31:0] $end
+$upscope $end
+$scope task fail $end
+$upscope $end
+$scope task fill_all $end
+$var reg 32 T opcode [31:0] $end
+$scope begin $ivl_for_loop0 $end
+$var integer 32 U k [31:0] $end
+$upscope $end
+$upscope $end
+$scope task pass $end
+$upscope $end
+$scope task send_window_and_wait $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b111 Q
+b110 P
+b101 O
+b100 N
+b11 M
+b10 L
+b1 K
+b0 J
+b100011 A
+b1000011 @
+b11 ?
+b110011 >
+b10011 =
+b1010011 <
+b111 ;
+b1100011 :
+b11 9
+b0 8
+b10 7
+b1 6
+b100011 +
+b1111111 *
+b110011 )
+b1000011 (
+b11 '
+b10011 &
+b1010011 %
+b111 $
+b1100011 #
+$end
+#0
+$dumpvars
+b1000 U
+b1111111 T
+b0 S
+b1000 R
+b10 I
+0H
+b10 G
+b0 F
+b0 E
+b0 D
+b0 C
+b0 B
+b0 5
+b0 4
+b0 3
+b0 2
+b0 1
+b0 0
+b0 /
+0.
+0-
+0,
+b10 "
+0!
+$end
+#5000
+1,
+#10000
+0,
+#15000
+1,
+#20000
+0,
+#25000
+1,
+#30000
+0,
+#35000
+1,
+#40000
+0,
+#45000
+1.
+1,
+#50000
+0,
+#55000
+1,
+#60000
+0,
+#65000
+1,
+#70000
+0,
+#75000
+b11 G
+1H
+b11 C
+b1110 4
+b1 B
+b1000 R
+b1 5
+b1000 S
+b10 0
+1,
+#80000
+0,
+#85000
+1,
+#90000
+0,
+#95000
+1,
+#100000
+0,
+#105000
+1H
+b1000 R
+b10 C
+b1 B
+b110 4
+b100 0
+1,
+#110000
+0,
+#115000
+1-
+1,
+#120000
+0,
+#125000
+1!
+b11 "
+b11 I
+0-
+1,
+#130000
+0,
+#135000
+b10 "
+b10 I
+0!
+b10 G
+0H
+b1000 R
+b1 C
+b1 B
+b10 4
+b1000 U
+b110 0
+1,
+#140000
+0,
+#145000
+1-
+1,
+#150000
+0,
+#155000
+0-
+1,
+#160000
+0,
+#165000
+1H
+b11 G
+b100 4
+b10 D
+b1000 R
+b1 C
+b0 B
+b11 3
+b0 5
+b1000 U
+b111 0
+1,
+#170000
+0,
+#175000
+1-
+1,
+#180000
+0,
+#185000
+1!
+b11 "
+b11 I
+0-
+1,
+#190000
+0,
+#195000
+b10 "
+b10 I
+0!
+0H
+b1000 R
+b1 D
+b0 C
+b0 4
+b1 3
+b1000 U
+b1001 0
+1,
+#200000
+0,
+#205000
+1-
+1,
+#210000
+0,
+#215000
+b11 "
+b11 I
+0-
+1,
+#220000
+0,
+#225000
+b10 "
+b10 I
+1H
+b1 E
+b1000 R
+b0 D
+b0 3
+b1000 2
+b1000 U
+b1011 0
+1,
+#230000
+0,
+#235000
+1-
+1,
+#240000
+0,
+#245000
+1!
+b11 "
+b11 I
+0-
+1,
+#250000
+0,
+#255000
+b10 "
+b10 I
+0!
+b11 C
+b11 G
+0H
+b111 4
+b1000 R
+b0 E
+b0 2
+b1000 U
+b1100 0
+1,
+#260000
+0,
+#265000
+1-
+1,
+#270000
+0,
+#275000
+b11 "
+b11 I
+0-
+1,
+#280000
+0,
+#285000
+b10 "
+b10 I
+b1 G
+b101 F
+b1000 R
+b0 C
+b0 4
+b11111 1
+b1000 U
+b1110 0
+1,
+#290000
+0,
+#295000
+1-
+1,
+#300000
+0,
+#305000
+b1 "
+b1 I
+0-
+1,
+#310000
+0,
+#315000
+b10 "
+b10 I
+b1 C
+b1000 R
+b10 F
+b100 4
+b11 1
+b1000 U
+b10000 0
+1,
+#320000
+0,
+#325000
+1-
+1,
+#330000
+0,
+#335000
+b1 "
+b1 I
+0-
+1,
+#340000
+0,
+#345000
+b10 "
+b10 I
+b10 G
+b1000 R
+b10 F
+b10 C
+b101 4
+b1010 1
+b1000 U
+b10001 0
+1,
+#350000
+0,
+#355000
+1-
+1,
+#360000
+0,
+#365000
+0-
+1,
+#370000
+0,
+#375000
+b1000 R
+b0 F
+b0 C
+b0 1
+b0 4
+b1000 U
+b10010 0
+1,
+#380000
+0,
+#385000
+1-
+1,
+#390000
+0,
+#395000
+0-
+1,
+#400000
+0,
+#405000
+b11 G
+1H
+b10 C
+b110 4
+b1 B
+b1000 R
+b1 5
+b1000 U
+b10100 0
+1,
+#410000
+0,
+#415000
+1-
+1,
+#420000
+0,
+#425000
+1!
+b11 "
+b11 I
+0-
+1,
+#430000
+0,
+#435000
+b10 "
+b10 I
+0!
+1,
+#440000
+0,
+#445000
+1H
+b0 4
+b1 E
+b1000 R
+b0 C
+b0 B
+b10000000 2
+b0 5
+b1000 U
+b10101 0
+1,
+#450000
+0,
+#455000
+1-
+1,
+#460000
+0,
+#465000
+1!
+b11 "
+b11 I
+0-
+1,
+#470000
+0,
+#475000
+b10 "
+b10 I
+0!
+b10110 0
+1,
